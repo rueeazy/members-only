@@ -1,5 +1,7 @@
 # README
 
+This project is part of The Odin Project's Curriculum [https://www.theodinproject.com/courses/ruby-on-rails/lessons/authentication?ref=lnav]
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
