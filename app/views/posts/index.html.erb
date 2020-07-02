@@ -1,27 +1,33 @@
-<p id="notice"><%= notice %></p>
+<h1>Top Secret Posts</h1>
 
-<h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <body>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.user_id_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div style="border:3px; border-style:solid; border-color:#000000; padding: 1em;">
+        <% if user_signed_in? %>
+          <h3><%= post.user.name %></h3>
+        <% else %>
+          <h4>*Anonymous*</h4>
+        <% end %>
+        <p><%= post.post %></p>
+      </div>
+      <br />
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+    <div class="content">
+      <% if user_signed_in? %>
+          <p>
+            <%= link_to 'New Post', new_post_path %>
+          </p>
+          <p>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          </p>
+      <% else %>
+          <p class="control">
+            <%= link_to 'Sign In', new_user_session_path %>
+          </p>
+					<p class="control">
+            <%= link_to 'Sign Up', new_user_registration_path %>
+          </p>
+      <% end %>
+    </div>
+  <body>
